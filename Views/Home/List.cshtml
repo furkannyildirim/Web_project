@@ -1,0 +1,48 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Product List";
+    Layout = "_Layout1"; 
+}
+
+<link rel="stylesheet" href="~/css/list.css">
+
+<h2 class="text-center mb-4">Book Collection</h2>
+
+<form method="get" asp-action="List" class="d-flex mb-4">
+    <input type="text" class="form-control me-2" name="searchTerm" placeholder="Search" aria-label="Search" value="@ViewData["SearchTerm"]">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+
+    <!-- Kategori Seçimi -->
+    <select class="form-control ms-2" name="genreId" asp-items="@ViewBag.Genres" aria-label="Kategori Seç">
+        <option value="">All Categories</option>
+     
+    </select>
+    <button class="btn btn-outline-secondary ms-2" type="submit">Filter</button>
+</form>
+
+@if (ViewData["SearchTerm"] != null || ViewData["SelectedGenre"] != null)
+{
+    <h4 class="text-center">Search Results:</h4>
+}
+<hr>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card product-card">
+                    <img src="@item.Image" class="card-img-top" alt="@item.Name" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h4 class="card-title">@item.Name</h4>
+                        <p class="card-text">Price: @item.Price</p>
+                        <div class="d-flex justify-content-between">
+                            <a asp-controller="Cart" asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-primary">Details</a>
+                            <a asp-controller="Cart" asp-action="Payment" asp-route-ProductId="@item.ProductId" class="btn btn-success">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

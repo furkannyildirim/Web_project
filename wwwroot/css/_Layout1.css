@@ -1,0 +1,33 @@
+.navbar {
+    background: linear-gradient(to right, #9b1c2f, #1d1d1d);  /* Kendi renginizi buraya yazabilirsiniz */
+  
+}
+
+.nav-link .bi-person-circle {
+    line-height: 1; /* Dikey hizalamayı iyileştirir */
+    vertical-align: middle; /* Hiza sorunlarını düzeltir */
+}
+
+
+.navbar-nav .nav-link:hover {
+    color: #b0b0b0 !important;   /* Hover rengi sarı olsun */
+     /* Altı çizili yapalım */
+}
+
+.navbar .nav-link {
+    color: white !important; /* Beyaz renk */
+}
+
+/* Navbar logo boyutunu ayarlamak */
+.navbar-brand {
+    font-size: 1.5rem;  /* Logo boyutunu büyütüyoruz */
+    color: aliceblue  !important;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-end; /* Linkleri yatayda ortalar */
+    width: 100%;
+}
+
+

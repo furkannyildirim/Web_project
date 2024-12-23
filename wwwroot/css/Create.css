@@ -1,0 +1,103 @@
+/* Sayfa genel stili */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container ile tüm içerik ortalanacak */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Başlık stilini belirleyelim */
+h2 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form etiketleri ve inputlar */
+.form-label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Focus olduğunda input kutularını daha belirgin yapalım */
+.form-control:focus {
+    border-color: #007bff;
+    background-color: #fff;
+    outline: none;
+}
+
+/* Validation hata mesajlarını stilize edelim */
+.text-danger {
+    font-size: 0.875rem;
+    color: #d9534f;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+/* Buton stilini belirleyelim */
+button.btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Buton üzerine geldiğinde renk değişimi */
+button.btn:hover {
+    background-color: #0056b3;
+}
+
+/* File input stilini daha kullanıcı dostu yapalım */
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Responsive tasarım: Mobil uyumlu sayfa */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    button.btn {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}

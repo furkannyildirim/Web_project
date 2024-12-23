@@ -1,0 +1,32 @@
+@model IEnumerable<User> 
+@{
+    ViewData["Title"] = "Ürün Listesi";
+    Layout = "_Layout1"; 
+}
+
+<link rel="stylesheet" href="~/css/UserList.css">
+
+<div class="container mt-4">
+    <h2>User List</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Username</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Surname</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Role.RoleName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

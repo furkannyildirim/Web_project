@@ -1,0 +1,153 @@
+@model Product
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout1"; 
+
+}
+
+<link rel="stylesheet" href="~/css/Details.css">
+
+@* <div class="container mt-5">
+    <div class="row">
+        <!-- Ürün Resmi -->
+        <div class="col-md-6">
+            <img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded shadow-lg" style="max-height: 400px; object-fit: cover; width: 100%;">
+        </div>
+
+        <!-- Ürün Bilgileri -->
+        <div class="col-md-6">
+            <h1>@Model.Name</h1>
+            <p class="text-muted">Kategori: <strong>@Model.Genre.Name</strong></p>
+            <p class="text-muted">Yazar: <strong>@Model.Author</strong></p>
+            <p class="text-primary fs-4">Fiyat: <strong>@Model.Price</strong></p>
+            <p class="mt-3">@Model.Summary</p>
+            <div class="mt-4">
+                <!-- Sepete Ekle Butonu -->
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-success btn-lg">
+                    Sepete Ekle
+                </a>
+                <!-- Geri Dön Butonu -->
+                <a asp-controller="Product" asp-action="List" class="btn btn-secondary btn-lg ms-3">
+                    Geri Dön
+                </a>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+@* <div class="container mt-5">
+    <div class="row">
+        <!-- Ürün Görsel ve Özet Alanı -->
+        <div class="col-md-6">
+            <div class="image-summary-container">
+                <img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded shadow-lg product-image">
+                <div class="summary-overlay">
+                    <p class="summary-text">@Model.Summary</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ürün Bilgileri -->
+        <div class="col-md-6">
+            <h1>@Model.Name</h1>
+            <p class="text-muted">Kategori: <strong>@Model.Genre.Name</strong></p>
+            <p class="text-muted">Yazar: <strong>@Model.Author</strong></p>
+            <p class="text-primary fs-4">Fiyat: <strong>@Model.Price?.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</strong></p>
+            <div class="mt-4">
+                <!-- Sepete Ekle Butonu -->
+                <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" class="btn btn-success btn-lg">
+                    Sepete Ekle
+                </a>
+                <!-- Geri Dön Butonu -->
+                <a asp-controller="Product" asp-action="List" class="btn btn-secondary btn-lg ms-3">
+                    Geri Dön
+                </a>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Ürün Görsel ve Özet Alanı -->
+        <div class="col-md-6">
+            <div class="image-summary-container">
+                <img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded shadow-lg product-image">
+                <div class="summary-overlay">
+                    <h3 class="summary-title">Summary</h3>
+                    <p class="summary-text">@Model.Summary</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ürün Bilgileri -->
+        <div class="col-md-6">
+            <h1>@Model.Name</h1>
+            <p class="text-muted">Category: <strong>@Model.Genre.Name</strong></p>
+            <p class="text-muted">Author: <strong>@Model.Author</strong></p>
+            <p class="text-primary fs-4">Price: <strong>@Model.Price?.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</strong></p>
+            <div class="mt-4">
+                <!-- Sepete Ekle Butonu -->
+                <a asp-controller="Cart" asp-action="Payment" asp-route-id="@Model.ProductId" class="btn btn-success btn-lg">
+                    Buy Now
+                </a>
+                <!-- Geri Dön Butonu -->
+                <a asp-controller="Home" asp-action="List" class="btn btn-secondary btn-lg ms-3">
+                    Go Back
+                </a>
+            </div>
+
+           @if(User.IsInRole("Admin")){
+              <div class="mt-4">
+                <!-- Sepete Ekle Butonu -->
+                <a asp-controller="Cart" asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-success btn-lg">
+                   Update
+                </a>
+                <!-- Geri Dön Butonu -->
+                @* <a asp-controller="Home" asp-action="List" class="btn btn-secondary btn-lg ms-3">
+                    Sil
+                </a> *@
+
+                <a href="javascript:void(0);" class="btn btn-danger btn-lg ms-3" onclick="confirmDelete(@Model.ProductId)">
+                    Delete
+                </a>
+
+            </div>
+           }
+        </div>
+    </div>
+</div>
+<!-- Silme Onay Modal -->
+<div id="deleteModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h4>Are you sure?</h4>
+        <p>This action cannot be undone!</p>
+        <button id="confirmDelete" class="btn btn-danger">Yes, Delete</button>
+        <button id="cancelDelete" class="btn btn-secondary">No, Cancel</button>
+    </div>
+</div>
+
+<!-- Arka Planı Bulanıklaştıran Overlay -->
+<div id="overlay" class="overlay" style="display:none;"></div>
+
+@section Scripts {
+    <script>
+        function confirmDelete(productId) {
+            // Modal'ı ve overlay'i göster
+            document.getElementById('deleteModal').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block';
+
+            // Evet, sil butonuna tıklanınca
+            document.getElementById('confirmDelete').onclick = function () {
+                window.location.href = '@Url.Action("Delete", "Cart", new { id = "__id__" })'.replace('__id__', productId);
+            };
+
+            // İptal butonuna tıklanınca modal'ı kapat
+            document.getElementById('cancelDelete').onclick = function () {
+                document.getElementById('deleteModal').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none';
+            };
+        }
+    </script>
+}

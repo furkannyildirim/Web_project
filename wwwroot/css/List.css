@@ -1,0 +1,133 @@
+/* Genel container düzeni */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Başlık stilini düzenleme */
+h2 {
+    text-align: center; /* Başlığı ortaya alıyoruz */
+    font-family: 'Arial', sans-serif; /* Şık bir yazı tipi */
+    font-size: 2rem; /* Font boyutunu büyütüyoruz */
+    font-weight: bold; /* Kalın yazı */
+    color: #333; /* Başlık rengini koyu gri yapıyoruz */
+    text-transform: uppercase; /* Harfleri büyük yapıyoruz */
+    letter-spacing: 2px; /* Harfler arasına biraz boşluk bırakıyoruz */
+    margin-bottom: 30px; /* Altına biraz boşluk bırakıyoruz */
+}
+
+/* Ürün kartlarının düzeni */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Kartlar arasındaki boşluk */
+    justify-content: left; /* Kartları ekranın genişliğine yayarak yerleştiriyoruz */
+}
+
+/* Her kartın genişliğini sabitliyoruz */
+.col-md-3 {
+    flex: 1 0 22%; /* Kartlar için 4 kolonlu düzen */
+    max-width: 22%; /* Maksimum genişlik sınırlaması */
+    box-sizing: border-box; /* Border ve padding'e göre boyutlama yapma */
+    display: flex;
+    justify-content: center; /* Ürün kartlarını ortalıyoruz */
+}
+
+/* Kart düzeni */
+.product-card {
+    width: 100%; /* Kartın genişliğini %100 yapıyoruz */
+    max-width: 250px; /* Kartın maksimum genişliği */
+    height: auto; /* Kart yüksekliğini esnek bırakıyoruz */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Hover efekti */
+}
+
+/* Kart başlığı */
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Kart metni */
+.card-text {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Kart alt kısmındaki butonlar */
+.card-body .d-flex {
+    gap: 10px;
+}
+
+.card-body .btn {
+    display: flex; /* Flexbox düzenini etkinleştir */
+    align-items: center; /* Dikeyde ortala */
+    justify-content: center; /* Yatayda ortala */
+    width: 48%; /* Butonların genişliğini sınırlıyoruz */
+    padding: 8px 12px;
+}
+
+/* Fiyat stilini güzelleştir */
+.card-body .card-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Sepet butonunun rengini yeşil yapıyoruz */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+/* Detay butonunun rengini mavi yapıyoruz */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Ekran küçüldüğünde her kartın 2 kolon halinde görünmesini sağlıyoruz */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: row; /* Yine satır düzeni */
+        justify-content: space-between; /* Butonlar ve kartlar arasındaki boşlukları koruyoruz */
+    }
+
+    .product-card {
+        max-width: 100%; /* Kartlar ekran boyutuna göre genişler */
+    }
+}
+
+/* Daha da küçüldüğünde tek kolon düzeni */
+@media (max-width: 576px) {
+    .row {
+        flex-direction: column; /* Tek kolon düzenine geçiyoruz */
+        align-items: center; /* Kartları ortalıyoruz */
+    }
+
+    .product-card {
+        max-width: 100%; /* Tek kolon olduğunda kartlar genişler */
+    }
+}

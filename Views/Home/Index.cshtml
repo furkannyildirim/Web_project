@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout1"; 
+
+}
+
+<link rel="stylesheet" href="~/css/Index.css">
+
+
+ 
+
+<section id="hero">
+    <div id="hero-content">
+        <h1>Welcome to the Book Store</h1>
+        <p>The latest and most popular books are here!</p>
+        <a asp-controller="Home" asp-action="List" class="btn btn-primary">Discover</a>
+    </div>
+</section>
+
+<section id="categories">
+    <div class="container py-5">
+        <h2 class="text-center mb-4">Our Categories</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="category-box">
+                    <img src="/img/2.jpg" alt="Romanlar" class="img-fluid">
+                    <h3>Novels</h3>
+                    <p>Discover the best novels.</p>
+                    @* <a href="#fiction" class="btn btn-primary">İncele</a> *@
+                    <a href="@Url.Action("List", "Home", new { genreId = 1 })" class="btn btn-primary">Review</a>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="category-box">
+                    <img src="/img/12.jpeg" alt="Bilim" class="img-fluid">
+                    <h3>Science</h3>
+                    <p>Open the doors to the world of science.</p>
+                    @* <a href="#science" class="btn btn-primary">İncele</a> *@
+                    <a href="@Url.Action("List", "Home", new { genreId = 2 })" class="btn btn-primary">Review</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                 <div class="category-box">
+                <img src="/img/11.jpg" alt="Tarih" class="img-fluid">
+                <h3> History</h3>
+                <p>Discover the traces of the past.</p>
+                @* <a href="#history-section" class="btn btn-primary">İncele</a> *@
+                <a href="@Url.Action("List", "Home", new { genreId = 3 })" class="btn btn-primary">Review</a>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+ 

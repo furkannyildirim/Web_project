@@ -1,0 +1,77 @@
+/* Sayfa genel stil */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Container (Ana Alan) */
+.container {
+    margin-top: 50px;
+    padding: 20px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Başlık stili */
+h2 {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Tablo stili */
+.table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablo başlıkları */
+.table th {
+    background-color: #2980b9;
+    color: #fff;
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Tablo hücreleri */
+.table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+/* Tablo satırları üzerine gelindiğinde arka plan rengini değiştir */
+.table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Tablo alt kısmındaki boşluklar */
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Bilgilendirme (Mesajlar) */
+.alert {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2rem;
+}

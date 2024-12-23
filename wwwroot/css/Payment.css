@@ -1,0 +1,68 @@
+/* Dış Div - Yatay ve Dikey Ortalama */
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Tüm ekran yüksekliği */
+    background: rgba(0, 0, 0, 0.6); /* Arka plan bulanık */
+    backdrop-filter: blur(8px);
+    padding: 20px;
+}
+
+/* İç Form Div */
+.payment-container {
+    max-width: 600px;
+    width: 100%; /* Mobil uyumlu */
+}
+
+/* Ödeme Sayfası */
+.payment-page {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Başlığı */
+.payment-form h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Form Alanları */
+.payment-form .form-label {
+    font-weight: bold;
+    color: #555;
+}
+
+.payment-form .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.payment-form .form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buton */
+.payment-form .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.payment-form .btn-primary:hover {
+    background-color: #0056b3;
+}

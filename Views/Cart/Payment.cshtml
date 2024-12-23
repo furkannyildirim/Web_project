@@ -1,0 +1,117 @@
+@model ProductInfo
+
+@{
+    ViewData["Title"] = "Payment Page";
+    Layout = "_Layout1"; // Layout dosyanızı buraya ekleyin
+}
+
+<link rel="stylesheet" href="~/css/Payment.css">
+
+
+
+<div class="outer-container">
+    <div class="payment-container">
+        <div class="payment-page">
+            <div class="payment-form">
+    <h2 class="mb-4">Enter Your Payment Information</h2>
+    <hr>
+
+    <!-- Ödeme Formu -->
+    <form id="paymentForm" data-product-id="@Model.ProductId">
+        <!-- Kredi Kartı Numarası -->
+        <div class="mb-3">
+            <label for="CardNumber" class="form-label">Credit Card Number</label>
+            <input type="text" class="form-control" id="CardNumber" name="CardNumber" 
+                   placeholder="Kart Numarasını Girin" maxlength="16" pattern="\d{16}" 
+                   required oninput="this.value = this.value.replace(/\D/g, '')">
+        </div>
+
+        <!-- Kart Sahibi -->
+        <div class="mb-3">
+            <label for="CardHolder" class="form-label">Cardholder</label>
+            <input type="text" class="form-control" id="CardHolder" name="CardHolder" 
+                   placeholder="Kart Sahibinin Adı" required>
+        </div>
+
+        <!-- Son Kullanma Tarihi -->
+        <div class="mb-3">
+            <label for="ExpiryDate" class="form-label">Expiration Date</label>
+            <input type="month" class="form-control" id="ExpiryDate" name="ExpiryDate" required>
+        </div>
+
+        <!-- CVV -->
+        <div class="mb-3">
+            <label for="CVV" class="form-label">CVV</label>
+            <input type="text" class="form-control" id="CVV" name="CVV" maxlength="3" 
+                   placeholder="CVV (3 Haneli Kod)" pattern="\d{3}" 
+                   required oninput="this.value = this.value.replace(/\D/g, '')">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Make Payment</button>
+    </form>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<!-- Ödeme Başarılı Pop-Up -->
+<div id="successPopup" class="popup">
+    <div class="popup-content">
+        <h3>Payment Successful!</h3>
+        <button class="btn btn-success mt-3" onclick="redirectToOrder()">Okay</button>
+    </div>
+</div>
+
+<!-- Pop-Up ve Form Tasarımı -->
+<style>
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        text-align: center;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .popup-content {
+        padding: 15px;
+    }
+
+    .popup h3 {
+        margin-bottom: 20px;
+    }
+
+    .popup button {
+        background-color: #28a745;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .popup button:hover {
+        background-color: #218838;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Ödeme formu gönderildiğinde
+        document.getElementById("paymentForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Formun submit işlemini engelle
+            document.getElementById("successPopup").style.display = "block"; // Pop-up göster
+        });
+
+        // Kullanıcıyı sipariş oluşturma sayfasına yönlendir
+        function redirectToOrder() {
+            const productId = document.getElementById("paymentForm").getAttribute("data-product-id");
+            window.location.href = `/Cart/CreateOrder?ProductId=${productId}`;
+        }
+    </script>
+}

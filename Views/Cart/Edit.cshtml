@@ -1,0 +1,56 @@
+@model Product
+@{
+    ViewData["Title"] = "Update Page";
+    Layout = "_Layout1";
+}
+<link rel="stylesheet" href="~/css/Create.css">
+
+<div class="container">
+    <main role="main" class="pb-5">
+        <h2>Update Book</h2>
+        <hr>
+
+        <form asp-controller="Cart" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <input type="hidden" asp-for="ProductId">
+                <label asp-for="Name" class="form-label">Book Title</label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Price</label>
+                <input asp-for="Price" class="form-control">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label">Image</label>
+                <input asp-for="Image" class="form-control" type="file">
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Author" class="form-label">Image</label>
+                <input asp-for="Author" class="form-control">
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Summary" class="form-label">Summary</label>
+                <textarea asp-for="Summary" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="GenreId" class="form-label">Category</label>
+                <select asp-for="GenreId" class="form-control" asp-items="@ViewBag.Genres">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="GenreId" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Update</button>
+        </form>
+    </main>
+</div>
